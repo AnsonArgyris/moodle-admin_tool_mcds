@@ -1,6 +1,7 @@
 <?php
 
 namespace tool_mcds\webservice;
+use tool_mcds\courses_information;
 
 /**
  * Class get_courses
@@ -34,26 +35,15 @@ class get_courses extends \external_api
     }
 
     /**
-     * @return string
-     * @throws \invalid_parameter_exception
+     * @return array
      */
     public function get_shared_courses()
     {
         //TODO - should there be some parameters? security things?
         //$params = self::validate_parameters(self::get_shared_courses_parameters(), []);
 
-        $courses = \get_courses('all', 'id ASC');
-        $retval  = [];
-        foreach ($courses as $course) {
-            if($course->id == 1) continue; //skip frontpage course
-            $retval[] = [
-                'id'        => $course->id,
-                'shortname' => $course->shortname,
-                'fullname'  => $course->fullname,
-                'idnumber'  => $course->idnumber,
-            ];
-        }
+        $courses = new courses_information();
 
-        return $retval;
+        return $courses->get_courselist();
     }
 }
