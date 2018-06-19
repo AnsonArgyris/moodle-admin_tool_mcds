@@ -38,6 +38,6 @@ $functions = array(
                     'description' => 'import moodle courses content', // human readable description of the web service function
                     'type' => 'write' // database rights of the web service function (read, write)
         
-                ),
+                )
                 
             );
