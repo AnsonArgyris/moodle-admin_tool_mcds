@@ -40,7 +40,7 @@ if ($action === 'confirm') {
     $ac = new auto_config();
     $ac->configure();
     $sampleapicall = $CFG->wwwroot.'/webservice/rest/server.php?wstoken='.$ac->token.
-            '&wsfunction=tool_mcds_version_info&'.'moodlewsrestformat=json';
+            '&wsfunction=tool_mcds_get_plugin_version&'.'moodlewsrestformat=json';
     $context = (object) ['token' => $ac->token, 'sampleapicall' => $sampleapicall];
     echo $OUTPUT->render_from_template('tool_mcds/auto_conf_result', $context);
     echo $OUTPUT->continue_button(new moodle_url('/admin/settings.php', ['section' => 'tool_mcds']));

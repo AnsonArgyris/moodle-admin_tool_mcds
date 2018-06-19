@@ -25,6 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot.'/admin/tool/mcds/classes/adminsetting/mcds_config_link.php');
+
 use tool_mcds\adminsetting\mcds_config_link;
 
 if ($hassiteconfig) {
