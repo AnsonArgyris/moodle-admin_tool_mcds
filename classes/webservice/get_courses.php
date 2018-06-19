@@ -40,7 +40,7 @@ class get_courses extends \external_api
     public function service()
     {
         //TODO - should there be some parameters? security things?
-        $params = self::validate_parameters(self::get_shared_courses_parameters(), []);
+        $params = self::validate_parameters(self::service_parameters(), []);
 
         $courses = new courses_information();
 

@@ -49,7 +49,7 @@ class version_information {
      */
     public function __construct() {
         $this->core = $this->get_component_version('core');
-        $this->toolmcds = $this->get_component_version('tool_ally');
+        $this->toolmcds = $this->get_component_version('tool_mcds');
     }
 
     /**
