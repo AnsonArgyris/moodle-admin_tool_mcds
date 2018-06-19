@@ -12,15 +12,15 @@ class get_courses extends \external_api
     /**
      *
      */
-    public function get_shared_courses_parameters()
+    public function service_parameters()
     {
-
+        return new \external_function_parameters([]);
     }
 
     /**
      * @return \external_value
      */
-    public function get_shared_courses_returns()
+    public function service_returns()
     {
         return new \external_multiple_structure(
             new \external_single_structure(
@@ -37,10 +37,10 @@ class get_courses extends \external_api
     /**
      * @return array
      */
-    public function get_shared_courses()
+    public function service()
     {
         //TODO - should there be some parameters? security things?
-        //$params = self::validate_parameters(self::get_shared_courses_parameters(), []);
+        $params = self::validate_parameters(self::get_shared_courses_parameters(), []);
 
         $courses = new courses_information();
 
