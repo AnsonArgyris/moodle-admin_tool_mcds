@@ -25,7 +25,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($ADMIN->fulltree) {
-   // TODO: Define the plugin settings page.
-   // https://docs.moodle.org/dev/Admin_settings
+use tool_mcds\adminsetting\mcds_config_link;
+
+if ($hassiteconfig) {
+    $settings = new admin_settingpage('tool_mcds', get_string('pluginname', 'tool_mcds'));
+
+    $settings->add(new admin_setting_configtext('tool_mcds/subscribeurl', new lang_string('subscribeurl', 'tool_mcds'),
+        new lang_string('subscribeurl', 'tool_mcds'), '', PARAM_URL, 60));
+
+    $settings->add(new mcds_config_link('tool_mcds/autconf', new lang_string('autoconfigure', 'tool_mcds'),
+        new moodle_url('/admin/tool/mcds/autoconfigws.php')));
+
+    $ADMIN->add('tools', $settings);
 }
