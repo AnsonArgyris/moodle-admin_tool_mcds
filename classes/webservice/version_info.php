@@ -28,9 +28,9 @@ class version_info extends \external_api {
     public static function service_returns() {
         return new \external_single_structure([
             'tool_mcds' => new \external_single_structure([
-                'version'  => new \external_value(PARAM_FLOAT, 'Ally admin tool version'),
-                'requires' => new \external_value(PARAM_FLOAT, 'Ally admin tool requires Moodle version'),
-                'release'  => new \external_value(PARAM_TEXT, 'Ally admin tool release'),
+                'version'  => new \external_value(PARAM_FLOAT, 'MCDS admin tool version'),
+                'requires' => new \external_value(PARAM_FLOAT, 'MCDS admin tool requires Moodle version'),
+                'release'  => new \external_value(PARAM_TEXT, 'MCDS admin tool release'),
             ]),
             'moodle' => new \external_single_structure([
                 'version' => new \external_value(PARAM_FLOAT, 'Moodle version'),
