@@ -38,8 +38,14 @@ $functions = array(
                     'description' => 'import moodle courses content', // human readable description of the web service function
                     'type' => 'write' // database rights of the web service function (read, write)
         
-                )
-                
+                ),
+                'tool_mcds_serve_file_download' => array( // web service function name
+                    'classname' => 'tool_mcds\\webservice\\serve_file_download', // class containing the external function
+                    'methodname' => 'service', // external function name
+                    'description' => 'download a moodle file from a given url', // human readable description of the web service function
+                    'type' => 'write' // database rights of the web service function (read, write)
+        
+                )                
             );
 
 $services = array(
@@ -48,6 +54,7 @@ $services = array(
             'tool_mcds_get_plugin_version',
             'tool_mcds_get_shared_courses',
             'tool_mcds_import_courses',
+            'tool_mcds_serve_file_download',
         ],
         'restrictedusers' => 0,
         'enabled'         => 1,
