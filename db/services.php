@@ -41,3 +41,16 @@ $functions = array(
                 )
                 
             );
+
+$services = array(
+    'MCDS integration services' => [
+        'functions'       => [
+            'tool_mcds_get_plugin_version',
+            'tool_mcds_get_shared_courses',
+            'tool_mcds_import_courses',
+        ],
+        'restrictedusers' => 0,
+        'enabled'         => 1,
+        'shortname'       => 'tool_mcds',
+    ],
+);

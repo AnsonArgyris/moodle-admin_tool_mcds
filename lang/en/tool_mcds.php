@@ -26,3 +26,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Moodle Content Delivery System';
+$string['autoconfigure'] = 'Auto configure web services';
+$string['subscribeurl'] = 'Subscription url';
+$string['autoconfigureconfirmation'] = 'Auto configure web services for MCDS?';
+$string['autoconfigsuccess'] = 'Successfully configured webservices';
+$string['autoconfigtoken'] = 'Config token';
+$string['autoconfigapicall'] = 'You can use the link below to test that the webservice works.';
