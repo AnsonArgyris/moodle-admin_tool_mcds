@@ -57,6 +57,5 @@ class mcds_config_link extends \admin_setting_heading {
             'linktitle' => $this->visiblename
         ];
         return '<div class="mcds-config-row"><a href="'.$context->href.'">'.$context->linktitle.'</a></div>';
-        return $OUTPUT->render_from_template('tool_ally/setting_ally_config', $context);
     }
 }
