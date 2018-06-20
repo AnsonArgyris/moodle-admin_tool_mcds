@@ -56,6 +56,6 @@ class mcds_config_link extends \admin_setting_heading {
             'href' => $this->link,
             'linktitle' => $this->visiblename
         ];
-        return '<div class="mcds-config-row"><a href="'.$context->href.'">'.$context->linktitle.'</a></div>';
+        return '<div class="mcds-config-row btn"><a class="btn btn-default" href="'.$context->href.'">'.$context->linktitle.'</a></div>';
     }
 }

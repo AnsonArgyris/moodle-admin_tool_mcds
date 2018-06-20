@@ -18,7 +18,7 @@ class service_call
     {
         return $this->url . '/webservice/rest/server.php?wstoken='
                . $this->token . '&wsfunction=' . $function
-                . $params . $json ? $this->json : '';
+                . $params . ($json ? $this->json : '');
     }
 
     public function connect_to_server()
@@ -42,5 +42,11 @@ class service_call
         }
 
         return file_get_contents($this->build_url('tool_mcds_import_courses', false, $param));
+    }
+
+    public function download_file($file)
+    {
+        //TODO error handling
+        return file_get_contents($this->build_url('tool_mcds_serve_file_download', false, "&filename=$file->filename"));
     }
 }
