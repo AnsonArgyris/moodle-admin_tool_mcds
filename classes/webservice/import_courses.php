@@ -31,12 +31,13 @@ class import_courses extends \external_api {
         for ($i = 0; $i < count($courseids); $i++) {
             $coursebak = new \mcds_file();
 
-            $file = $coursebak->devliver_course($courseids[$i]);
+            $hashes = $coursebak->devliver_course($courseids[$i]);
 
             $c = [
                 "id" =>  $courseids[$i],
                 "checksum" =>  '120EA8A25E5D487BF68B5F7096440019',
-                "backupfile" => '/pluginfile.php/70/backup/course/'.$file
+                "contenthash" => $hashes['contenthash'],
+                "pathnamehash" => $hashes['pathnamehash'],
             ];
             array_push($courses['courses'], $c);
         }
@@ -77,7 +78,8 @@ class import_courses extends \external_api {
                     new \external_single_structure(array(
                         'id' => new \external_value(PARAM_INT, 'id of course'),
                         'checksum'  => new \external_value(PARAM_TEXT, 'checksum of the backup data'),
-                        'backupfile' => new \external_value(PARAM_URL, 'url to the backup file')
+                        'contenthash' => new \external_value(PARAM_TEXT, 'contenthash the backup data'),
+                        'pathnamehash' => new \external_value(PARAM_TEXT, 'pathnamehashgit  the backup data'),
                     ),
                     'course data'),
                 'list of courses')

@@ -18,9 +18,9 @@ class mcds_file {
     public function devliver_course($courseid) {
 
         $course = $this->check_courses_exitst($courseid);
-        $file = $this->create_mbzfile($course);
+        $hashes = $this->create_mbzfile($course);
 
-        return $file;
+        return $hashes;
 
     }
 
@@ -54,10 +54,16 @@ class mcds_file {
         $bc->finish_ui();
         $bc->execute_plan();
         $results = $bc->get_results();
+
         $file = $results['backup_destination']; // May be empty if file already moved to target location.
         $bc->destroy();
-
-        return $filename;
+        $contenthash = $file->get_contenthash();
+        $pathnamehash = $file->get_pathnamehash();
+        $hashes = [
+            'contenthash' => $contenthash,
+            'pathnamehash' => $pathnamehash
+        ];
+        return $hashes;
     }
 
 
