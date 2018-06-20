@@ -17,16 +17,22 @@ $PAGE->set_pagelayout('admin');
 
 echo $OUTPUT->header();
 
-$ws      = new \tool_mcds\service_call();
-$version = $ws->connect_to_server();
-//TODO check version
-$mform   = new \tool_mcds\courselist_form(null, ['courses' => $ws->list_all_courses()]);
+$ws    = new \tool_mcds\service_call();
+$mform = new \tool_mcds\courselist_form(null, ['courses' => $ws->list_all_courses()]);
 
-if($mform->is_cancelled()) {
+if (!compare_version($version = json_decode($ws->connect_to_server()))) {
+    print_error('required version:', 'error', '', $version);//TODO
+} else if ($mform->is_cancelled()) {
     redirect($url);
 } else if ($mform->is_submitted()) {
-    //TODO call import
-    var_dump($mform->get_data());
+    $data = $mform->get_data();
+    $import = [];
+    foreach ($data as $id => $checked) {
+        if($id == "submitbutton") continue;
+        if($checked == 1) $import[] = $id;
+    }
+    $courses = $ws->import_courses($import);
+    //TODO import courses
 } else if (isset($_POST['listcoursesbutton'])) {
     $mform->display();
 } else {
@@ -41,3 +47,12 @@ if($mform->is_cancelled()) {
 }
 
 echo $OUTPUT->footer();
+
+function compare_version($server)
+{
+    $own = new \tool_mcds\version_information();
+    //TODO implement a usefull version control
+    $bool = true;
+
+    return $bool;
+}
