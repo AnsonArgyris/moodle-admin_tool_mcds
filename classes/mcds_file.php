@@ -6,21 +6,13 @@
  * Time: 4:17 PM
  */
 
-//namespace tool_mcds;
+// correct namspaces
 
 require_once($CFG->libdir.'/clilib.php');
 require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
 
-class mcds_backup
-{
+class mcds_file {
 
-
-    public function __construct() {
-        $this->devliver_course(2);
-
-        echo 'test';
-
-    }
 
 
     public function devliver_course($courseid) {
@@ -65,30 +57,7 @@ class mcds_backup
         $file = $results['backup_destination']; // May be empty if file already moved to target location.
         $bc->destroy();
 
-
-        if (!empty($dir)) {
-            if ($file) {
-                mtrace("Writing " . $dir.'/'.$filename);
-                if ($file->copy_content_to($dir.'/'.$filename)) {
-                    $file->delete();
-                    mtrace("Backup completed.");
-                } else {
-                    mtrace("Destination directory does not exist or is not writable. Leaving the backup in the course backup file area.");
-                }
-            }
-        } else {
-            mtrace("Backup completed, the new file is listed in the backup area of the given course");
-        }
-
-        $this->files[] = [
-            $course->id => $file,
-        ];
-
-        $this->meta[$course->id] = [
-            //'checksum' => md5_file($file),
-            'idnumber' => $course->idnumber,
-        ];
-        return $file;
+        return $filename;
     }
 
 

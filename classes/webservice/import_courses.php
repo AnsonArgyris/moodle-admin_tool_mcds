@@ -5,7 +5,7 @@ namespace tool_mcds\webservice;
 defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__.'/../../../../../lib/externallib.php');
-
+require_once(__DIR__.'/../mcds_file.php');
 /**
  * Get exported course data
  *
@@ -25,12 +25,18 @@ class import_courses extends \external_api {
         $courses = [
             'courses'  => []
         ];
-        
+
+
+
         for ($i = 0; $i < count($courseids); $i++) {
+            $coursebak = new \mcds_file();
+
+            $file = $coursebak->devliver_course($courseids[$i]);
+
             $c = [
                 "id" =>  $courseids[$i],
                 "checksum" =>  '120EA8A25E5D487BF68B5F7096440019',
-                "backupfile" => 'https://abc.com'
+                "backupfile" => '/pluginfile.php/70/backup/course/'.$file
             ];
             array_push($courses['courses'], $c);
         }
