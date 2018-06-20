@@ -25,13 +25,31 @@ if (!compare_version($version = json_decode($ws->connect_to_server()))) {
 } else if ($mform->is_cancelled()) {
     redirect($url);
 } else if ($mform->is_submitted()) {
-    $data = $mform->get_data();
+    $data   = $mform->get_data();
     $import = [];
     foreach ($data as $id => $checked) {
-        if($id == "submitbutton") continue;
-        if($checked == 1) $import[] = $id;
+        if ($id == "submitbutton") continue;
+        if ($checked == 1) $import[] = $id;
     }
-    $courses = $ws->import_courses($import);
+    $courses = json_decode($ws->import_courses($import));
+
+    foreach ($courses as $course) {
+        $file = json_decode($ws->download_file($course[0]->pathnamehash)); //TODO why is there an array?
+
+        $context = context_system::instance();
+        $fs = get_file_storage();
+        $file_record = array('contextid'=>$context->id, 'component'=>'mcds', 'filearea'=>'backup',
+                             'itemid'=>0, 'filepath'=>'/', 'filename'=>$file->filename,
+                             'timecreated'=>time(), 'timemodified'=>time());
+        /**
+         * @var stored_file storedfile
+         */
+        $storedfile = $fs->create_file_from_string($file_record, base64_decode($file->filecontent));
+        $restore_url = new moodle_url("/backup/restore.php?contextid=" . $storedfile->get_contextid() .
+                      "&pathnamehash=". $storedfile->get_pathnamehash().
+                      "&contenthash=" . $storedfile->get_contenthash());
+        redirect($restore_url);
+    }
     //TODO import courses
 } else if (isset($_POST['listcoursesbutton'])) {
     $mform->display();

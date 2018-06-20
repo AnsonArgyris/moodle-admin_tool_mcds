@@ -41,12 +41,12 @@ class service_call
             $param .= "&courseids[$index]=$id";
         }
 
-        return file_get_contents($this->build_url('tool_mcds_import_courses', false, $param));
+        return file_get_contents($this->build_url('tool_mcds_import_courses', true, $param));
     }
 
-    public function download_file($file)
+    public function download_file($path)
     {
         //TODO error handling
-        return file_get_contents($this->build_url('tool_mcds_serve_file_download', false, "&filename=$file->filename"));
+        return file_get_contents($this->build_url('tool_mcds_serve_file_download', true, '&filepath=' . $path));
     }
 }
