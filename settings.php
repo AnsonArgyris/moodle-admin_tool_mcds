@@ -34,6 +34,8 @@ if ($hassiteconfig) {
 
     $settings->add(new admin_setting_configtext('tool_mcds/subscribeurl', new lang_string('subscribeurl', 'tool_mcds'),
         new lang_string('subscribeurl', 'tool_mcds'), '', PARAM_URL, 60));
+    $settings->add(new admin_setting_configtext('tool_mcds/token', new lang_string('token', 'tool_mcds'),
+                                                new lang_string('token', 'tool_mcds'), '', PARAM_RAW, 60));
 
     $settings->add(new mcds_config_link('tool_mcds/autconf', new lang_string('autoconfigure', 'tool_mcds'),
         new moodle_url('/admin/tool/mcds/autoconfigws.php')));

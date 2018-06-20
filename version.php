@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tool_mcds';
 $plugin->release = '3.4.0';
-$plugin->version = 2018061902;
+$plugin->version = 2018062000;
 $plugin->requires = 2017111300;
 $plugin->maturity = MATURITY_ALPHA;
