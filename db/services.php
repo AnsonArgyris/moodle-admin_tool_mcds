@@ -8,45 +8,44 @@
 //
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle. If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 defined('MOODLE_INTERNAL') || die();
 
-// @formatter:off
 $functions = array(
-                'tool_mcds_get_plugin_version' => array( // web service function name
-                    'classname' => 'tool_mcds\\webservice\\version_info', // class containing the external function
-                    'methodname' => 'service', // external function name
-                    'description' => 'get moodle and plugin version information', // human readable description of the web service function
-                    'type' => 'read' // database rights of the web service function (read, write)
-        
-                ),
-                'tool_mcds_get_shared_courses' => array( // web service function name
-                    'classname' => 'tool_mcds\\webservice\\get_courses', // class containing the external function
-                    'methodname' => 'service', // external function name
-                    'description' => 'Get all courses where I have those roles', // human readable description of the web service function
-                    'type' => 'read' // database rights of the web service function (read, write)
-        
-                ),
-                'tool_mcds_import_courses' => array( // web service function name
-                    'classname' => 'tool_mcds\\webservice\\import_courses', // class containing the external function
-                    'methodname' => 'service', // external function name
-                    'description' => 'import moodle courses content', // human readable description of the web service function
-                    'type' => 'write' // database rights of the web service function (read, write)
-        
-                ),
-                'tool_mcds_serve_file_download' => array( // web service function name
-                    'classname' => 'tool_mcds\\webservice\\serve_file_download', // class containing the external function
-                    'methodname' => 'service', // external function name
-                    'description' => 'download a moodle file from a given url', // human readable description of the web service function
-                    'type' => 'write' // database rights of the web service function (read, write)
-        
-                )                
-            );
+        'tool_mcds_get_plugin_version' => array(
+            'classname' => 'tool_mcds\\webservice\\version_info',
+            'methodname' => 'service',
+            'description' => 'get moodle and plugin version information',
+            'type' => 'read'
+
+        ),
+        'tool_mcds_get_shared_courses' => array(
+            'classname' => 'tool_mcds\\webservice\\get_courses',
+            'methodname' => 'service',
+            'description' => 'Get all courses where I have those roles',
+            'type' => 'read'
+
+        ),
+        'tool_mcds_import_courses' => array(
+            'classname' => 'tool_mcds\\webservice\\import_courses',
+            'methodname' => 'service',
+            'description' => 'import moodle courses content',
+            'type' => 'write'
+
+        ),
+        'tool_mcds_serve_file_download' => array(
+            'classname' => 'tool_mcds\\webservice\\serve_file_download',
+            'methodname' => 'service',
+            'description' => 'download a moodle file from a given url',
+            'type' => 'write'
+
+        )
+    );
 
 $services = array(
     'MCDS integration services' => [
